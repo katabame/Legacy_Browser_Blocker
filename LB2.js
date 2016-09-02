@@ -41,8 +41,7 @@ var isSafari = (ua.indexOf('safari') > -1) && (ua.indexOf('chrome') == -1);
 var isOpera = (ua.indexOf('opera') > -1);
 
 // Document ready function
-$(document).ready(function()
-{
+$(function(){
 	document.getElementById("LB2_Blocked").style.display="none";
 
 	if (isMSIE || isIE6 || isIE7 || isIE8 || isIE9 || isIE10 || isIE11 || isEdge)
