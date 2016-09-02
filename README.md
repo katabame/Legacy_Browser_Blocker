@@ -11,7 +11,7 @@ LB2 using jquery.
 ```javascript
 <head>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.rawgit.com/katabamia/Legacy_Browser_Blocker/LB2.js"></script>
+	<script type="text/javascript" src="https://cdn.rawgit.com/katabamia/Legacy_Browser_Blocker/master/LB2.js"></script>
 </head>
 ```
 
