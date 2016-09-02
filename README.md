@@ -5,8 +5,8 @@ Legacy Browser Blocker (LB2) is blocking view your site from IE / Edge.
 ## Usage
 
 #### 1. Load LB2.js
-Write following code in `<head>`
-LB2 using jquery.
+Write following code in `<head>`  
+LB2 using jquery. please load it 1st.
 
 ```javascript
 <head>
