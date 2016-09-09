@@ -22,7 +22,7 @@ $(function () {
   else list = list.split(",");
   if ((function () {
       var b = !(mode == "black");
-      $.each(supported, function (i, v) {
+      $.each(list, function (i, v) {
         if (browser[v]) {
           b = !b;
           return;
