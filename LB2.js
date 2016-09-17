@@ -1,52 +1,35 @@
-var ua = navigator.userAgent.toLowerCase();
-var ver = navigator.appVersion.toLowerCase();
-
-// IE (except 11)
-var isMSIE = (ua.indexOf('msie') > -1) && (ua.indexOf('opera') == -1);
-
-// IE6
-var isIE6 = isMSIE && (ver.indexOf('msie 6.') > -1);
-
-// IE7
-var isIE7 = isMSIE && (ver.indexOf('msie 7.') > -1);
-
-// IE8
-var isIE8 = isMSIE && (ver.indexOf('msie 8.') > -1);
-
-// IE9
-var isIE9 = isMSIE && (ver.indexOf('msie 9.') > -1);
-
-// IE10
-var isIE10 = isMSIE && (ver.indexOf('msie 10.') > -1);
-
-// IE11
-var isIE11 = (ua.indexOf('trident/7') > -1);
-
-// IE
-var isIE = isMSIE || isIE11;
-
-// Edge
-var isEdge = (ua.indexOf('edge') > -1);
-
-// Google Chrome
-var isChrome = (ua.indexOf('chrome') > -1) && (ua.indexOf('edge') == -1);
-
-// Firefox
-var isFirefox = (ua.indexOf('firefox') > -1);
-
-// Safari
-var isSafari = (ua.indexOf('safari') > -1) && (ua.indexOf('chrome') == -1);
-
-// Opera
-var isOpera = (ua.indexOf('opera') > -1);
-
-// Document ready function
-$(function(){
-	document.getElementById("LB2_Blocked").style.display="none";
-
-	if (isMSIE || isIE6 || isIE7 || isIE8 || isIE9 || isIE10 || isIE11 || isEdge)
-	{
-		document.getElementById("LB2_Passed").style.display="none";
-		document.getElementById("LB2_Blocked").style.display="block";
-	}
+$(function () {
+  var ua = navigator.userAgent.toLowerCase();
+  var ver = navigator.appVersion.toLowerCase();
+  var browser = {
+    ie6: ver.indexOf('msie 6.') > -1
+    , ie7: ver.indexOf('msie 7.') > -1
+    , ie8: ver.indexOf('msie 8.') > -1
+    , ie9: ver.indexOf('msie 9.') > -1
+    , ie10: ver.indexOf('msie 10.') > -1
+    , ie11: ua.indexOf('trident/7') > -1
+    , edge: ua.indexOf('edge') > -1
+    , chrome: ua.indexOf('chrome') > -1
+    , firefox: ua.indexOf('firefox') > -1
+    , safari: ua.indexOf('safari') > -1
+    , opera: ua.indexOf('opera') > -1
+  }
+  var $body = $("body");
+  var mode = $body.attr("blockmode");
+  if (mode == undefined) mode = "black";
+  var list = $body.attr("list");
+  if (list == undefined) list = ["ie6,ie7,ie8,ie9,ie10,ie11,edge"];
+  else list = list.split(",");
+  if ((function () {
+      var b = !(mode == "black");
+      $.each(list, function (i, v) {
+        if (browser[v]) {
+          b = !b;
+          return;
+        }
+      });
+      return b;
+    })()) {
+    $body.addClass("unsupported");
+  }
 });

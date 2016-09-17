@@ -1,0 +1,397 @@
+@import url("//cdn.rawgit.com/SnO2WMaN/grid/master/grid.min.css");
+@import url("//cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/3.2.0/sanitize.min.css");
+@import url(//fonts.googleapis.com/css?family=Raleway:400,100,700);
+@import url("//fonts.googleapis.com/earlyaccess/notosansjapanese.css");
+@theme1: #00ffce;
+@text: #535353;
+@shadow: fade(black,
+25%);
+.fill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.v_centering (@justify: center,
+@align: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: @justify;
+  align-items: @align;
+}
+
+.h_centering (@justify: center,
+@align: center) {
+  display: flex;
+  flex-direction: column;
+  justify-content: @justify;
+  align-items: @align;
+}
+
+.abs_centering {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+html {
+  font-size: 0.5vmin!important;
+  color: @text;
+  * {
+    font-family: "noto sans japanese";
+    font-weight: 400;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  &>* {
+    min-height: 100vh;
+    width: 100%;
+  }
+  #supported {
+    display: block;
+  }
+  #unsupported {
+    display: none;
+  }
+  &.unsupported {
+    #supported {
+      display: none;
+    }
+    #unsupported {
+      display: block;
+    }
+  }
+}
+
+#supported {
+  &>header {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+    &>.ie {
+      .abs_centering;
+      color: @text;
+      width: 30rem;
+      height: 30rem;
+      opacity: .5;
+    }
+    &>.remove {
+      .abs_centering;
+      color: @theme1;
+      width: 40rem;
+      height: 40rem;
+      opacity: .75;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &>.grid {
+      opacity: .25;
+    }
+    &>.contents {
+      .fill;
+      .h_centering;
+      color: @text;
+      z-index: 1;
+      &>h1 {
+        font-size: 9rem;
+        font-family: "raleway";
+        letter-spacing: .05em;
+        &>span {
+          font: inherit;
+          color: inherit;
+          font-size: 1.5em;
+          font-weight: 700;
+          border-bottom: .05em solid white;
+        }
+      }
+      &>h2 {
+        font-size: 7rem;
+        font-family: "raleway";
+        font-weight: 700;
+      }
+    }
+    &>.trash {
+      .abs_centering;
+      color: @theme1;
+      width: 50rem;
+      height: 50rem;
+      top: auto;
+      bottom: -25rem;
+      z-index: 0;
+    }
+  }
+  #header_label {
+    background: @theme1;
+    height: 20vh;
+  }
+  &>#choise {
+    min-height: 100vh;
+    background: @theme1;
+    padding: 2.5%;
+    &>.title {
+      color: white;
+      font-size: 20rem;
+      margin: .5em;
+    }
+    &>ul {
+      .v_centering(@align: flex-start);
+      &>li {
+        width: 40%;
+        min-height: 50vh;
+        margin: 0 5%;
+        background: white;
+        padding: 5%;
+        position: relative;
+        &>webicon {
+          color: @theme1;
+          .abs_centering;
+          opacity: .25;
+          z-index: 0;
+        }
+        &>h1 {
+          z-index: 1;
+          color: @theme1;
+          font-size: 10rem;
+          letter-spacing: .125em;
+          font-family: "raleway";
+          &>span {
+            font: inherit;
+            font-weight: 700;
+            font-size: 1.5em;
+          }
+        }
+        &>h2 {
+          z-index: 1;
+          color: @theme1;
+          font-size: 7rem;
+          letter-spacing: .125em;
+          font-family: "raleway";
+          &>span {
+            font: inherit;
+            font-weight: 700;
+            font-size: 1.5em;
+          }
+        }
+        &>ul {
+          z-index: 1;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          &>li {
+            width: 100%/3;
+            &>webicon {
+              padding: 10%;
+              color: @theme1;
+            }
+          }
+        }
+        &.fuck {
+          &>ul {
+            justify-content: center;
+            &>li {
+              width: 75%;
+            }
+          }
+        }
+      }
+    }
+  }
+  &>#so {
+    min-height: 100vh;
+    position: relative;
+    perspective: 400px;
+    padding: 2.5%;
+    &>.grid {
+      opacity: .25;
+      z-index: 1;
+    }
+    &>.file {
+      .abs_centering;
+      .h_centering;
+      &>webicon {
+        color: @theme1;
+        width: 50%;
+        height: 50%;
+        animation: rotateY 3s linear infinite;
+      }
+      &>h1 {
+        color: @theme1;
+        font-size: 15rem;
+        &>a {
+          position: relative;
+          font: inherit;
+          color: inherit;
+          z-index: 999;
+          &:after {
+            content: "";
+            .fill;
+            transform: scaleX(0);
+            transition: .25s transform;
+            border-bottom: .1em @theme1 solid;
+            transform-origin: left;
+          }
+          &:hover {
+            &:after {
+              transform: scaleX(1);
+            }
+          }
+        }
+      }
+    }
+    &>.title {
+      color: @theme1;
+      font-size: 20rem;
+      margin: .5em;
+    }
+  }
+  #author {
+    min-height: 25vh;
+    background: @theme1;
+    padding: 5%;
+    &>.authors {
+      .v_centering;
+      &>li {
+        width: 45%;
+        background: white;
+        margin: 2.5%;
+        .v_centering(flex-start,
+        center);
+        position: relative;
+        &>img {
+          width: 10rem;
+          height: 10rem;
+          padding: 2.5%;
+        }
+        &>div {
+          &>h1 {
+            font-size: 5rem;
+            letter-spacing: .05em;
+            font-weight: 700;
+          }
+          &>h2 {
+            font-size: 3rem;
+          }
+        }
+        &>a {
+          .fill;
+        }
+      }
+    }
+  }
+  #licence {
+    min-height: 75vh;
+    padding: 5%;
+    background: @theme1;
+    &>.title {
+      color: white;
+      font-size: 20rem;
+      margin: .5em;
+    }
+    &>h2 {
+      color: white;
+      font-size: 20rem;
+      margin: .5em;
+      text-align: left;
+      font-weight: 700;
+      font-family: "raleway";
+    }
+    &>p {
+      color: white;
+      font-size: 10rem;
+      text-align: center;
+    }
+  }
+}
+
+#unsupported {
+  background: linear-gradient(@theme1, shade(@theme1, 50%));
+  position: relative;
+  &>webicon {
+    .abs_centering;
+    width: 50rem;
+    height: 50rem;
+    opacity: .25;
+    color: black;
+  }
+  &>.grid {
+    opacity: .25;
+  }
+  &>.contents {
+    .fill;
+    .h_centering;
+    color: white;
+    &>h1 {
+      font-size: 15rem;
+      font-family: "raleway";
+    }
+    &>h2 {
+      font-size: 5rem;
+      text-align: center;
+      font-weight: 100;
+    }
+    &>p {
+      font-size: 3rem;
+      text-align: center;
+      font-weight: 100;
+      letter-spacing: 1px;
+      &>a {
+        font: inherit;
+        color: inherit;
+        position: relative;
+        &:after {
+          content: "";
+          .fill;
+          transform: scaleX(0);
+          transition: .25s transform;
+          border-bottom: 1px white solid;
+          transform-origin: left;
+        }
+        &:hover {
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotateY {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotateZ {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@media screen and (min-width:1440px) {
+  #supported {
+    &>section {
+      padding: 5% 20%;
+      &>.contents {}
+    }
+  }
+}
+
+@media screen and (max-width:720px) {}
